@@ -148,7 +148,8 @@ const Index: React.FC<Props> = () => {
       <div style={{ width: isUploading ? '100%' : 'auto' }}>
         {!isUploading ? (
           <div>
-            <h1>Add a video.</h1>
+            <h1>Create your branded ARVRtise.x account to receive donations.</h1>
+            <h1>Add a positive 10 sec ARVRtising commercial.</h1>
             <h1>Get a shareable link to stream it.</h1>
           </div>
           ) : null}
