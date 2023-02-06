@@ -116,7 +116,7 @@ const Layout: React.FC<Props> = ({
                   <div className="footer-link back"><a onClick={() => router.back()} role="presentation">Back</a></div> :
                   <>
                   <div className="footer-link info"><a role="presentation" onClick={() => setModalOpen(true)}>Info</a></div>
-                  <div className="footer-link mux">An <a href={OPEN_SOURCE_URL}>open source</a> project by <a href={MUX_HOME_PAGE_URL}>Mux</a></div>
+                  <div className="footer-link mux">An <a href={OPEN_SOURCE_URL}>non profit open source</a> project by <a href={MUX_HOME_PAGE_URL}>ARVRtise</a></div>
                   <div className="divider" />
                   <div className="footer-link terms"><Link href="/terms"><a>Terms</a></Link></div>
                   </>
