@@ -20,12 +20,12 @@ const UploadPage: React.FC<Props> = ({ children }) => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Mux
+              ARVRtise Live
             </a>{' '}
             provides APIs for developers working with video.
           </p>
           <p>
-            Uploading a video uses the Mux{' '}
+            Uploading a positive vibes video uses the ARVRtise{' '}
             <a href="https://docs.mux.com/docs/direct-upload?utm_source=stream-new">
               direct upload API
             </a>
