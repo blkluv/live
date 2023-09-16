@@ -145,7 +145,7 @@ const Index: React.FC<Props> = () => {
       dragActive
       isUploading={isUploading}
     >
-      <div style={{ width: isUploading ? '100%' : 'auto' }}>
+      <div className='wrapper'>
         {!isUploading ? (
           <div>
             <h2>Create your branded ARVRtise.x account to receive live donations.</h2>
@@ -157,25 +157,21 @@ const Index: React.FC<Props> = () => {
           {!isUploading ? (
             <div className="drop-notice">
               <h2>↓ Drag & drop a video file anywhere</h2>
-          </div>
+            </div>
           ) : null}
-          <MuxUploader 
+          <MuxUploader
+            id="uploader"
+            noDrop
             onUploadStart={handleUpload}
             onChunkAttempt={handleChunkAttempt}
             onChunkSuccess={handleChunkSuccess}
             onSuccess={handleSuccess}
-            style={{ 
-              '--button-border-radius': '50px',
-              '--button-hover-background': '#222',
-              '--button-border': '2px solid #000',
-              '--button-padding': '20px 20px',
-              fontSize: isUploading ? '4vw': '26px', // TO-DO: Either overflows on large screens (8vw) or too small on small screens (4vw). (TD).
-              fontFamily: 'Akkurat',
-              lineHeight: '33px',
-            }} 
             dynamicChunkSize={isDynamicChunkSizeSet}
-            id="uploader" 
-            endpoint={createUpload} />
+            endpoint={createUpload}
+            style={{ fontSize: isUploading ? '4vw': '26px' }}
+          >
+            <Button className={isUploading ? 'hidden' : '' } slot="file-select">Upload video</Button>
+          </MuxUploader>
         {!isUploading ? (
           <>
             <div className="cta-record">
@@ -189,6 +185,13 @@ const Index: React.FC<Props> = () => {
         </div>
       </div>
       <style jsx>{`
+        .wrapper {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          height: 100%;
+          width: ${isUploading ? '100%' : 'auto'};
+        }
         input {
           display: none;
         }
@@ -199,13 +202,9 @@ const Index: React.FC<Props> = () => {
         .cta {
           display: flex;
           flex-direction: column;
-          position: absolute;
-          right: 0;
-          bottom: 0;
           align-items: flex-end;
           justify-content: flex-end;
-          margin-bottom: 100px;
-          margin-right: 30px;
+          margin-right: 15px;
         }
         .cta .button {
           margin: 8px 0;
@@ -227,6 +226,10 @@ const Index: React.FC<Props> = () => {
         }
 
         @media only screen and (min-width: ${breakpoints.md}px) {
+          .cta-record {
+            display: block;
+            margin-top: 15px;
+          }
           .drop-notice {
             display: block;
             text-align: right;
@@ -246,10 +249,12 @@ const Index: React.FC<Props> = () => {
           .cta-text-desktop {
             display: inline-block;
           }
-          .cta-record {
-            display: block;
-            margin-top: 30px;
-          }
+        }
+      `}
+      </style>
+      <style jsx global>{`
+        mux-uploader::part(progress-percentage) {
+          align-items: flex-start;
         }
       `}
       </style>
